@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Total Form Validation</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+	<link rel="stylesheet" href="fv.css" type="text/css" />
+	<!--[if IE]>
+	<style>
+		.field .tooltip .content{ display:none; opacity:1; }
+		.field .tooltip:hover .content{ display:block; }
+	</style>
+	<![endif]-->
+</head>
+<body>
+	<div id='wrap'>
+		<div class='options'>
+		<!-- 	<label>
+				<input type='checkbox' id='vfields' />
+				Vertical orientation
+			</label> -->
+		</div>
+		<h1 title='how forms should be done.'>Registration form - Mutation Testing</h1>
+		<section class='form'>
+			<form action="" method="post" novalidate>
+				<fieldset>
+					<div class="field">
+						<label>
+							<span>Name</span>
+							<input id="name" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex. John f. Kennedy" required="required" />
+						</label>
+						<div class='tooltip help'>
+							<span id="nameSpan">?</span>
+							<div class='content'>
+								<b></b>
+								<p id="nameMessage">Name must be at least 2 words</p>
+							</div>
+						</div>
+					</div>
+					<div class="field">
+						<label>
+							<span>Occupation</span>
+							<input id="occupation" class='optional' name="occupation" data-validate-length-range="5,15" type="text" />
+						</label>
+						<div class='tooltip help'>
+							<span id="occupationSpan">?</span>
+							<div class='content'>
+								<b></b>
+								<p id="occupationMessage">An optional field. This field is only validated when it has a value.<br /><em>Minimum 5 chars, maximum 15</em></p>
+							</div>
+						</div>
+                        <span class='extra'>(optional)</span>
+					</div>
+					<div class="field">
+						<label>
+							<span>Number</span>
+							<input id="number" type="number" class='number' name="number" data-validate-minmax="10,100" required='required'>
+						</label>
+						<div class='tooltip help'>
+							<span id="numberSpan">?</span>
+							<div class='content'>
+								<b></b>
+								<p id="numberMessage">Number must be between 10 and 100</p>
+							</div>
+						</div>
+					</div>
+					<div class="field">
+						<label>
+							<span>Date</span>
+							<input class='date' type="date" name="date" required='required'>
+						</label>
+					</div>
+					<div class="field">
+						<label>
+							<span>Time</span>
+							<input id="time" class='time' type="time" name="time" required='required'>
+							<div class='tooltip help'>
+							<span id="timeSpan">?</span>
+							<div class='content'>
+								<b></b>
+								<p id="timeMessage">Time should be from 08:00 to 20:00</p>
+							</div>
+						</div>
+						</label>
+					</div>
+					<div class="field">
+						<label>
+							<span>Password</span>
+							<input id="password" type="password" name="password" data-validate-length="6,8" required='required'>
+						</label>
+						<div class='tooltip help'>
+							<span id="passwordSpan">?</span>
+							<div class='content'>
+								<b></b>
+								<p id="passwordMessage">Should be of length 6 OR 8 characters</p>
+							</div>
+						</div>
+					</div>
+					<div class="field">
+						<label>
+							<span>Repeat password</span>
+							<input id="rePassword" type="password" name="password2" data-validate-linked='password' required='required'>
+						</label>
+					</div>
+					<div class="field">
+						<label>
+							<span>Telephone</span>
+							<input id="telephone" type="tel" class='tel' name="phone" placeholder="+38761000000" required='required' data-validate-length-range="8,20">
+						</label>
+						<div class='tooltip help'>
+							<span id="telSpan">?</span>
+							<div class='content'>
+								<b></b>
+								<p id="telMessage">Notice that for a phone number user must input a '+' sign and digits</p>
+							</div>
+						</div>
+					</div>
+					<div class="field">
+						<label>
+							<span>Drop down selection</span>
+							<select required name="dropdown">
+								<option value="">-- please select --</option>
+								<option value="o1">Option 1</option>
+								<option value="o2">Option 2</option>
+								<option value="o3">Option 3</option>
+							</select>
+						</label>
+					</div>
+					<div class="field">
+						<label>
+							<span>Picture upload</span>
+							<input id="picture" type='file' required>
+						</label>
+						<div class='tooltip help'>
+							<span id="fileSpan">?</span>
+							<div class='content'>
+								<b></b>
+								<p id="fileMessage">JPG, PNG and JPEG allowed</p>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+				<input type="button" value="Submit" onclick="validate()">
+                <input type="button" value="Reset" onclick="reset()">
+			</form>
+		</section>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="multifield.js"></script>
+    <script src="validator.js"></script>
+	<script>
+		// initialize a validator instance from the "FormValidator" constructor.
+        // A "<form>" element is optionally passed as an argument, but is not a must
+		/*var validator = new FormValidator({"events" : ['blur', 'paste', 'change']}, document.forms[0]);
+
+
+        // on form "submit" event
+		document.forms[0].onsubmit = function(e){
+			var submit = true,
+					validatorResult = validator.checkAll(this);
+
+			console.log(validatorResult);
+			return !!validatorResult.valid;
+		}
+
+		// on form "reset" event
+		document.forms[0].onreset = function(e){
+				validator.reset();
+		}
+
+        // stuff related ONLY for this demo page:
+		$('.toggleValidationTooltips').change(function(){
+			validator.settings.alerts = !this.checked;
+
+			if( this.checked )
+				$('form .alert').remove();
+		}).prop('checked',false);*/
+	</script>
+</body>
+</html>
